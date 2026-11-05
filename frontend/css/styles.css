@@ -1,0 +1,1194 @@
+/* =====================================================
+   REAPROVEITA — ESTILIZAÇÃO PRINCIPAL
+   Organização: cores, estrutura e componentes
+   ===================================================== */
+
+/* 1. FONTES */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+/* 2. VARIÁVEIS */
+:root {
+  --verde: #63df62;
+  --verde-escuro: #789b8a;
+  --verde-profundo: #527b65;
+  --fundo: #eafff5;
+  --superficie: #f7fff9;
+  --borda: #000000;
+  --texto: #496657;
+  --texto-suave: #88a397;
+  --sombra: 0 8px 26px #244b3510;
+  --vermelho: #c45c55;
+  --amarelo: #fff0a9;
+  --cor-nomes: #000000;
+}
+
+/* 3. CONFIGURAÇÕES GERAIS */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font:
+    14px "DM Sans",
+    sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+input,
+select,
+textarea {
+  outline: none;
+}
+
+/* 4. MENU LATERAL */
+.barra-lateral {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 280px;
+  padding: 30px 20px 18px;
+  background: black;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  transition: transform 0.25s ease;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 10px 48px;
+  color: #fff;
+  text-decoration: none;
+  font:
+    800 21px Manrope,
+    sans-serif;
+  letter-spacing: -0.8px;
+}
+
+.marca-simbolo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  /* Imagem PNG personalizada: manter orientacao original */
+}
+
+.marca small {
+  display: block;
+  margin-top: 3px;
+  color: #e1f2e8;
+  font:
+    600 8px "DM Sans",
+    sans-serif;
+  letter-spacing: 1.6px;
+}
+
+.rotulo-menu,
+.texto-superior {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #dceee3;
+}
+
+.rotulo-menu {
+  padding: 0 12px 13px;
+}
+
+.navegacao {
+  display: grid;
+  gap: 7px;
+}
+
+.item-navegacao {
+  border: 0;
+  background: transparent;
+  color: #f1faf4;
+  text-align: left;
+  padding: 14px 15px;
+  border-radius: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.item-navegacao:hover,
+.item-navegacao.ativo {
+  background: #65e65e;
+  color: #fff;
+  box-shadow: 0 4px 12px #4dc64a35;
+}
+
+.item-navegacao span {
+  width: 22px;
+  text-align: center;
+  font-size: 21px;
+}
+
+.rodape-barra-lateral {
+  margin-top: auto;
+}
+
+.cartao-impacto {
+  background: #151616;
+  border: 1px solid #fcfcfc;
+  border-radius: 13px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.icone-impacto {
+  font-size: 22px;
+}
+
+.cartao-impacto strong {
+  color: white;
+  display: block;
+  margin: 8px 0 5px;
+  font:
+    700 14px Manrope,
+    sans-serif;
+}
+
+.cartao-impacto p {
+  color: #e1f0e7;
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.usuario {
+  border-top: 1px solid #f8faf9;
+  padding: 16px 6px 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #d9eee0;
+  color: #416b55;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.usuario strong,
+.usuario small {
+  color: white;
+  display: block;
+}
+
+.usuario strong {
+  font-size: 12px;
+}
+
+.usuario small {
+  font-size: 10px;
+  color: #e0eee5;
+  margin-top: 3px;
+}
+
+/* 5. ÁREA PRINCIPAL E CABEÇALHO */
+.area-principal {
+  margin-left: 280px;
+  padding: 0 38px 48px;
+  max-width: 1700px;
+}
+
+.barra-superior {
+  min-height: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #d9eee2;
+}
+
+.barra-superior h1 {
+  font:
+    800 29px Manrope,
+    sans-serif;
+  letter-spacing: -0.8px;
+  margin: 5px 0;
+  color: #000000;
+}
+
+.barra-superior .texto-superior {
+  color: #000000;
+  font-size: 11px;
+}
+
+.acoes-superiores {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.ponto-status {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #3caf70;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.status-sistema {
+  font-size: 11px;
+  color: #000000;
+}
+
+.botao-menu {
+  display: none;
+  border: 1px solid var(--borda);
+  background: white;
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #000000;
+}
+
+/* 6. BOTÕES */
+.botao-principal,
+.botao-contorno {
+  border-radius: 9px;
+  padding: 11px 15px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.botao-principal {
+  border: 1px solid #62df5d;
+  background: #62df5d;
+  color: #fff;
+}
+
+.botao-principal:hover {
+  background: #4dcc4b;
+  border-color: #4dcc4b;
+}
+
+.botao-contorno {
+  border: 1px solid #c9e2d3;
+  background: #fafffc;
+  color: #456b54;
+}
+
+.botao-contorno:hover {
+  background: #e6f5e9;
+}
+
+.botao-texto {
+  border: 0;
+  background: transparent;
+  color: #43835d;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.botao-fechar-modal {
+  border: 0;
+  background: #edf5ef;
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  font-size: 23px;
+  color: #66766c;
+}
+
+/* 7. PÁGINAS E INDICADORES */
+.pagina {
+  display: none;
+}
+
+.pagina.ativa {
+  display: block;
+}
+
+.grade-estatisticas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 10px 0 25px;
+}
+
+.cartao-estatistica {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 15px;
+  padding: 20px 22px;
+  min-height: 128px;
+  box-shadow: none;
+}
+
+.topo-estatistica {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #000000;
+  font-weight: 600;
+}
+
+.cartao-estatistica > strong {
+  display: block;
+  font:
+    800 35px Manrope,
+    sans-serif;
+  color: #000000;
+  margin: 7px 0 0;
+}
+
+.cartao-estatistica > small {
+  font-size: 10px;
+  color: #000000;
+}
+
+.icone-estatistica {
+  width: 41px;
+  height: 41px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+  flex-shrink: 0;
+}
+
+.icone-estatistica.verde {
+  background: #e0f7e5;
+  color: #5fbf70;
+}
+
+.icone-estatistica.azul {
+  background: #e2f6f6;
+  color: #5aa9a5;
+}
+
+.icone-estatistica.laranja {
+  background: #fff3cf;
+  color: #c5a13d;
+}
+
+/* 8. CONTEÚDO E PAINÉIS */
+.grade-conteudo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+  margin-bottom: 17px;
+}
+
+.painel {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 15px;
+  padding: 21px 22px;
+  margin-bottom: 17px;
+  min-width: 0;
+}
+
+.cabecalho-painel {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.cabecalho-painel h2 {
+  font:
+    700 17px Manrope,
+    sans-serif;
+  color: #587767;
+  margin: 0 0 5px;
+}
+
+.cabecalho-painel p {
+  color: #91aa9d;
+  font-size: 11px;
+  margin: 0;
+}
+
+.numero-reaproveitado {
+  font:
+    800 36px Manrope,
+    sans-serif;
+  color: #668b79;
+  margin: 10px 0;
+}
+
+.numero-reaproveitado small {
+  font-size: 15px;
+}
+
+.texto-ajuda {
+  font-size: 11px;
+  color: #91aa9d;
+}
+
+/* 9. TABELAS */
+.envoltorio-tabela {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabela-dados {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+.tabela-dados th {
+  text-align: left;
+  background: #e4f7e9;
+  color: #718f7f;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  padding: 14px 15px;
+}
+
+.tabela-dados th:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.tabela-dados th:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.tabela-dados td {
+  padding: 14px 15px;
+  border-bottom: 1px solid #e1f1e7;
+  color: #779486;
+  font-size: 12px;
+}
+
+.tabela-dados tr:last-child td {
+  border-bottom: 0;
+}
+
+.nome-item {
+  font-weight: 700;
+  color: #587767;
+}
+
+.texto-secundario {
+  display: block;
+  color: #9bb0a4;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.texto-atenuado {
+  color: #91a99d;
+}
+
+/* 10. SITUAÇÕES E AÇÕES */
+.etiqueta-status {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 7px 12px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.etiqueta-status.regular,
+.etiqueta-status.completed {
+  background: #76e66d;
+  color: white;
+}
+
+.etiqueta-status.expiring,
+.etiqueta-status.pending {
+  background: #fff0a9;
+  color: #a88e29;
+}
+
+.etiqueta-status.expired,
+.etiqueta-status.cancelled {
+  background: #ffe1df;
+  color: #b4514a;
+}
+
+.etiqueta-status.empty,
+.etiqueta-status.confirmed {
+  background: #e2f2f2;
+  color: #548e8c;
+}
+
+.botao-acao {
+  border: 1px solid #d8e9de;
+  background: #fff;
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: #557060;
+  font-size: 10px;
+  margin: 2px 4px 2px 0;
+}
+
+.botao-acao:hover {
+  background: #eaf7ed;
+}
+
+.botao-acao.excluir {
+  color: #b45c55;
+}
+
+.vazio {
+  padding: 27px;
+  text-align: center;
+  color: #91a99d;
+  font-size: 12px;
+}
+
+/* 11. ALERTAS DE VALIDADE */
+.lista-alertas {
+  display: grid;
+  gap: 10px;
+}
+
+.item-alerta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px;
+  background: #fff9e8;
+  border: 1px solid #f1e5bd;
+  border-radius: 9px;
+  font-size: 11px;
+}
+
+.item-alerta strong {
+  color: #816d36;
+}
+
+.item-alerta small {
+  display: block;
+  margin-top: 4px;
+  color: #a18e5b;
+}
+
+/* 12. FERRAMENTAS E BUSCAS */
+.cabecalho-secao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 5px 0 20px;
+}
+
+.cabecalho-secao h2 {
+  font:
+    800 21px Manrope,
+    sans-serif;
+  color: #587767;
+  margin: 0 0 5px;
+}
+
+.cabecalho-secao p {
+  color: #91aa9d;
+  font-size: 11px;
+  margin: 0;
+}
+
+.barra-ferramentas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.campo-busca,
+.campo-filtro {
+  border: 1px solid #cce9dc;
+  background: #f7fff9;
+  border-radius: 8px;
+  padding: 11px 12px;
+  color: #496657;
+}
+
+.campo-busca {
+  width: min(350px, 100%);
+}
+
+.campo-filtro {
+  min-width: 180px;
+}
+
+.campo-busca:focus,
+.campo-filtro:focus,
+.campo-formulario:focus {
+  border-color: #65a881;
+  box-shadow: 0 0 0 3px #e8f4ec;
+}
+
+/* 13. ESTABELECIMENTOS */
+.grade-cartoes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.cartao-estabelecimento {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 18px;
+  min-width: 0;
+}
+
+.icone-estabelecimento {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: #e0f7e5;
+  color: #5fbf70;
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+}
+
+.cartao-estabelecimento h3 {
+  font:
+    700 16px Manrope,
+    sans-serif;
+  color: #587767;
+  margin: 14px 0 5px;
+}
+
+.cartao-estabelecimento p {
+  font-size: 11px;
+  color: #91aa9d;
+  line-height: 1.5;
+}
+
+.metadados-estabelecimento {
+  border-top: 1px solid #e4f1e8;
+  padding-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 10px;
+  color: #799889;
+}
+
+/* 14. RELATÓRIOS */
+.destaque-relatorio {
+  background: linear-gradient(110deg, #789b8a, #5e9875);
+  border-radius: 14px;
+  padding: 24px 28px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.destaque-relatorio h2 {
+  font:
+    800 38px Manrope,
+    sans-serif;
+  margin: 8px 0 2px;
+}
+
+.destaque-relatorio p {
+  font-size: 11px;
+  color: #e0f0e5;
+  margin: 0;
+}
+
+.texto-superior.claro {
+  color: #dceee3;
+}
+
+.ilustracao-relatorio {
+  font-size: 55px;
+  flex-shrink: 0;
+}
+
+.estatisticas-relatorio {
+  margin-top: 15px;
+}
+
+.estatisticas-relatorio .cartao-estatistica {
+  min-height: 95px;
+}
+
+.estatisticas-relatorio .cartao-estatistica > strong {
+  font-size: 27px;
+}
+
+.lista-barras {
+  display: grid;
+  gap: 14px;
+}
+
+.linha-barra {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr) 70px;
+  gap: 10px;
+  align-items: center;
+  font-size: 11px;
+  color: #698777;
+}
+
+.trilho-barra {
+  height: 8px;
+  background: #e9f2eb;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.valor-barra {
+  height: 100%;
+  background: #62c783;
+  border-radius: 9px;
+}
+
+.linha-barra strong {
+  text-align: right;
+  color: #456b54;
+}
+
+.explicacao-relatorio {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #91aa9d;
+}
+
+/* 15. FORMULÁRIOS */
+.grade-formulario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.campo-formulario.completo {
+  grid-column: 1 / -1;
+}
+
+.campo-formulario label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #53665a;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+  width: 100%;
+  border: 1px solid #d5e7db;
+  background: white;
+  border-radius: 8px;
+  padding: 10px 11px;
+  color: #34483b;
+  font-size: 12px;
+}
+
+.campo-formulario textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+/* 16. MODAL */
+.fundo-modal {
+  position: fixed;
+  inset: 0;
+  background: #102d1d80;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 30;
+}
+
+.fundo-modal.aberto {
+  display: flex;
+}
+
+.janela-modal {
+  background: #fbfffc;
+  width: min(590px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  border-radius: 15px;
+  padding: 23px;
+  box-shadow: 0 25px 80px #102d1d40;
+}
+
+.cabecalho-modal {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.cabecalho-modal .texto-superior {
+  color: #6b9a7c;
+}
+
+.cabecalho-modal h2 {
+  font:
+    800 20px Manrope,
+    sans-serif;
+  margin: 5px 0;
+  color: #587767;
+}
+
+.acoes-formulario {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 21px;
+  padding-top: 15px;
+  border-top: 1px solid #e4eee7;
+}
+
+/* 17. NOTIFICAÇÕES */
+.notificacao {
+  position: fixed;
+  bottom: 22px;
+  right: 25px;
+  background: #173f2e;
+  color: white;
+  padding: 12px 17px;
+  border-radius: 9px;
+  box-shadow: var(--sombra);
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.25s;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.notificacao.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 18. RESPONSIVIDADE */
+@media (max-width: 1100px) {
+  .barra-lateral {
+    width: 240px;
+  }
+
+  .area-principal {
+    margin-left: 240px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .grade-estatisticas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .barra-lateral {
+    transform: translateX(-100%);
+    width: 270px;
+    box-shadow: 15px 0 35px #102d1d20;
+  }
+
+  .barra-lateral.aberta {
+    transform: translateX(0);
+  }
+
+  .area-principal {
+    margin-left: 0;
+    padding: 0 15px 35px;
+  }
+
+  .barra-superior {
+    min-height: 82px;
+    margin-bottom: 18px;
+    gap: 10px;
+  }
+
+  .botao-menu {
+    display: block;
+  }
+
+  .barra-superior h1 {
+    font-size: 22px;
+  }
+
+  .acoes-superiores {
+    margin-left: auto;
+    gap: 9px;
+  }
+
+  .status-sistema {
+    display: none;
+  }
+
+  .acoes-superiores .botao-principal {
+    font-size: 10px;
+    padding: 10px;
+  }
+
+  .grade-cartoes,
+  .grade-conteudo {
+    grid-template-columns: 1fr;
+  }
+
+  .cabecalho-secao {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .barra-ferramentas {
+    flex-direction: column;
+  }
+
+  .campo-busca,
+  .campo-filtro {
+    width: 100%;
+  }
+
+  .painel {
+    padding: 15px;
+  }
+
+  .grade-formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .campo-formulario.completo {
+    grid-column: auto;
+  }
+
+  .ilustracao-relatorio {
+    font-size: 42px;
+  }
+
+  .destaque-relatorio {
+    padding: 20px;
+  }
+
+  .destaque-relatorio h2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 420px) {
+  .grade-estatisticas {
+    gap: 9px;
+  }
+
+  .cartao-estatistica {
+    padding: 13px;
+    min-height: 112px;
+  }
+
+  .cartao-estatistica > strong {
+    font-size: 28px;
+  }
+
+  .topo-estatistica {
+    font-size: 10px;
+  }
+
+  .linha-barra {
+    grid-template-columns: 85px minmax(0, 1fr) 55px;
+    gap: 7px;
+    font-size: 10px;
+  }
+
+  .janela-modal {
+    padding: 17px;
+  }
+
+  .notificacao {
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    text-align: center;
+  }
+}
+
+/* =====================================================
+   19. CONTROLE GLOBAL DA COR DOS NOMES E TEXTOS
+   Não altera o menu lateral
+   ===================================================== */
+
+body {
+  color: var(--cor-nomes);
+}
+
+/* Cabeçalhos e títulos */
+.area-principal h1,
+.area-principal h2,
+.area-principal h3,
+.area-principal h4,
+.area-principal p,
+.area-principal small,
+.area-principal strong,
+.area-principal label,
+.area-principal span,
+.area-principal td,
+.area-principal th,
+.area-principal li {
+  color: var(--cor-nomes);
+}
+
+/* Textos dos painéis */
+.cabecalho-painel h2,
+.cabecalho-painel p,
+.cabecalho-secao h2,
+.cabecalho-secao p,
+.numero-reaproveitado,
+.texto-ajuda,
+.nome-item,
+.texto-secundario,
+.texto-atenuado {
+  color: var(--cor-nomes);
+}
+
+/* Cartões e estatísticas */
+.topo-estatistica,
+.cartao-estatistica > strong,
+.cartao-estatistica > small,
+.cartao-estabelecimento h3,
+.cartao-estabelecimento p,
+.metadados-estabelecimento {
+  color: var(--cor-nomes);
+}
+
+/* Tabelas */
+.tabela-dados th,
+.tabela-dados td {
+  color: var(--cor-nomes);
+}
+
+/* Relatórios */
+.linha-barra,
+.linha-barra strong,
+.explicacao-relatorio {
+  color: var(--cor-nomes);
+}
+
+/* Formulários */
+.campo-formulario label,
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+  color: var(--cor-nomes);
+}
+
+/* Cabeçalho superior */
+.barra-superior h1,
+.barra-superior .texto-superior,
+.status-sistema {
+  color: var(--cor-nomes);
+}
+
+/* Botões e ações fora do menu lateral */
+.botao-contorno,
+.botao-texto,
+.botao-acao {
+  color: var(--cor-nomes);
+}
+
+/* Mantém o menu lateral independente da cor global */
+.barra-lateral,
+.barra-lateral * {
+  color: inherit;
+}
+
+.barra-lateral .marca,
+.barra-lateral .item-navegacao {
+  color: #fff;
+}
+
+.barra-lateral .rotulo-menu,
+.barra-lateral .texto-superior {
+  color: #dceee3;
+}
+
+.barra-lateral .marca small,
+.barra-lateral .cartao-impacto p,
+.barra-lateral .usuario small {
+  color: #e1f2e8;
+}
+
+.barra-lateral .item-navegacao {
+  color: #f1faf4;
+}
+
+.barra-lateral .item-navegacao:hover,
+.barra-lateral .item-navegacao.ativo {
+  color: #fff;
+}
+
+
+/* Reaproveita+ — Flaticon UIcons 4.0, família Regular Rounded */
+.fi { display: inline-flex; align-items: center; justify-content: center; font-style: normal; line-height: 1; vertical-align: middle; }
+.fi::before { display: block; line-height: 1; }
+.item-navegacao .icone-menu { width: 22px; min-width: 22px; text-align: center; font-size: 19px; }
+.marca-simbolo .fi { font-size: 31px; }
+.icone-estatistica .fi { font-size: 23px; }
+.icone-impacto .fi { font-size: 26px; }
+.creditos-icones { display: block; font-size: 10px; margin-top: 12px; opacity: .75; color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.creditos-icones:hover { opacity: 1; }
+
+/* Logo PNG personalizado — substitui a folha antiga do Flaticon */
+.marca-simbolo .logo-folha {
+  width: 32px;
+  height: 32px;
+  display: block;
+  object-fit: contain;
+  transform: none;
+}
+.icone-impacto .logo-folha-impacto {
+  width: 26px;
+  height: 26px;
+  display: block;
+  object-fit: contain;
+}

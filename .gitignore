@@ -1,0 +1,34 @@
+
+# Dependências do Node.js
+node_modules/
+
+# Variáveis de ambiente e informações privadas
+.env
+.env.*
+.env.example
+
+# Arquivos de log
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Arquivos gerados
+dist/
+build/
+coverage/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Configurações locais do VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Arquivos temporários
+*.tmp
+*.temp

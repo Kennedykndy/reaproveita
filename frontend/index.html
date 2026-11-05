@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#789b8a" />
+
+    <meta
+      name="description"
+      content="Reaproveita: sistema de gestão de alimentos, lotes e reservas para reduzir o desperdício."
+    />
+
+    <title>Reaproveita | Gestão de alimentos</title>
+    <link rel="icon" type="image/png" href="/assets/logo-folha.png" />
+
+    <!-- Flaticon UIcons: familia Regular Rounded (CDN oficial) -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script type="module" src="/js/app.js"></script>
+  </head>
+
+  <body>
+    <!-- Menu lateral -->
+    <aside class="barra-lateral" id="sidebar">
+      <a class="marca" href="#dashboard">
+        <span class="marca-simbolo"><img src="/assets/logo-folha.png" alt="" class="logo-folha" width="32" height="32" /></span>
+        <span>
+          Reaproveita+
+          <small>GESTÃO DE ALIMENTOS</small>
+        </span>
+      </a>
+
+      <div class="rotulo-menu">MENU PRINCIPAL</div>
+
+      <nav class="navegacao">
+        <button class="item-navegacao ativo" data-page="dashboard">
+          <span class="icone-menu"><i class="fi fi-rr-apps" aria-hidden="true"></i></span> Dashboard
+        </button>
+
+        <button class="item-navegacao" data-page="establishments">
+          <span class="icone-menu"><i class="fi fi-rr-building" aria-hidden="true"></i></span> Estabelecimentos
+        </button>
+
+        <button class="item-navegacao" data-page="products">
+          <span class="icone-menu"><i class="fi fi-rr-box" aria-hidden="true"></i></span> Produtos
+        </button>
+
+        <button class="item-navegacao" data-page="lots">
+          <span class="icone-menu"><i class="fi fi-rr-layers" aria-hidden="true"></i></span> Lotes
+        </button>
+
+        <button class="item-navegacao" data-page="reservations">
+          <span class="icone-menu"><i class="fi fi-rr-calendar" aria-hidden="true"></i></span> Reservas
+        </button>
+
+        <button class="item-navegacao" data-page="reports">
+          <span class="icone-menu"><i class="fi fi-rr-chart-histogram" aria-hidden="true"></i></span> Relatórios
+        </button>
+      </nav>
+
+      <!-- Informações no rodapé do menu -->
+      <div class="rodape-barra-lateral">
+        <a class="creditos-icones" href="https://www.flaticon.com/uicons" target="_blank" rel="noopener noreferrer">Ícones por Flaticon UIcons</a>
+        <div class="cartao-impacto">
+          <span class="icone-impacto"><img src="/assets/logo-folha.png" alt="" class="logo-folha-impacto" width="26" height="26" /></span>
+          <strong>Menos desperdício,<br />mais impacto.</strong>
+          <p>Todo alimento aproveitado faz a diferença.</p>
+        </div>
+
+        <div class="usuario">
+          <div class="avatar">AD</div>
+          <div>
+            <strong>Administrador</strong>
+            <small>Painel de gestão</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Área principal -->
+    <main class="area-principal">
+      <header class="barra-superior">
+        <button
+          class="botao-menu"
+          id="mobileMenu"
+          type="button"
+          aria-label="Abrir menu"
+        >
+          ☰
+        </button>
+
+        <div class="identificacao-pagina">
+          <span class="texto-superior" id="dateLabel">PAINEL DE CONTROLE</span>
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+
+        <div class="acoes-superiores">
+          <span class="status-sistema">
+            <i class="ponto-status"></i>
+            MariaDB conectado
+          </span>
+
+          <button class="botao-principal" id="headerAction" type="button">
+            ＋ Novo produto
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard -->
+      <section class="pagina ativa" id="page-dashboard">
+        <div class="grade-estatisticas">
+          <article class="cartao-estatistica">
+            <div class="topo-estatistica">
+              <span>Produtos</span>
+              <span class="icone-estatistica verde"><i class="fi fi-rr-box" aria-hidden="true"></i></span>
+            </div>
+            <strong id="metricProducts">—</strong>
+            <small>Produtos cadastrados</small>
+          </article>
+
+          <article class="cartao-estatistica">
+            <div class="topo-estatistica">
+              <span>Lotes</span>
+              <span class="icone-estatistica azul"><i class="fi fi-rr-layers" aria-hidden="true"></i></span>
+            </div>
+            <strong id="metricLots">—</strong>
+            <small>Lotes registrados</small>
+          </article>
+
+          <article class="cartao-estatistica">
+            <div class="topo-estatistica">
+              <span>Próximos do vencimento</span>
+              <span class="icone-estatistica laranja"><i class="fi fi-rr-calendar" aria-hidden="true"></i></span>
+            </div>
+            <strong id="metricExpiring">—</strong>
+            <small>Vencem em até 3 dias</small>
+          </article>
+
+          <article class="cartao-estatistica">
+            <div class="topo-estatistica">
+              <span>Reservas</span>
+              <span class="icone-estatistica verde"><i class="fi fi-rr-shopping-cart" aria-hidden="true"></i></span>
+            </div>
+            <strong id="metricReservations">—</strong>
+            <small>Em andamento</small>
+          </article>
+        </div>
+
+        <article class="painel">
+          <div class="cabecalho-painel">
+            <div>
+              <h2>Controle de produtos</h2>
+              <p>Acompanhe quantidades e situação dos produtos.</p>
+            </div>
+
+            <button class="botao-texto" type="button" data-go="lots">
+              Ver lotes →
+            </button>
+          </div>
+
+          <div class="envoltorio-tabela" id="dashboardTable"></div>
+        </article>
+
+        <div class="grade-conteudo">
+          <article class="painel">
+            <div class="cabecalho-painel">
+              <div>
+                <h2>Desperdício evitado</h2>
+                <p>Peso estimado de alimentos destinados.</p>
+              </div>
+              <span class="icone-estatistica verde"><i class="fi fi-rr-heart" aria-hidden="true"></i></span>
+            </div>
+
+            <div class="numero-reaproveitado" id="savedKg">
+              0 <small>kg</small>
+            </div>
+            <p class="texto-ajuda">Considera somente reservas concluídas.</p>
+          </article>
+
+          <article class="painel">
+            <div class="cabecalho-painel">
+              <div>
+                <h2>Atenção à validade</h2>
+                <p>Priorize lotes com vencimento próximo.</p>
+              </div>
+            </div>
+
+            <div id="expiryNotice" class="lista-alertas"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Estabelecimentos -->
+      <section class="pagina" id="page-establishments">
+        <div class="cabecalho-secao">
+          <div>
+            <h2>Estabelecimentos</h2>
+            <p>Consulte e cadastre os estabelecimentos participantes.</p>
+          </div>
+
+          <button class="botao-principal" id="addEstablishment" type="button">
+            ＋ Novo estabelecimento
+          </button>
+        </div>
+
+        <div class="barra-ferramentas">
+          <input
+            class="campo-busca"
+            id="estSearch"
+            type="search"
+            placeholder="⌕ Buscar estabelecimento..."
+          />
+        </div>
+
+        <div id="establishmentList" class="grade-cartoes"></div>
+      </section>
+
+      <!-- Produtos -->
+      <section class="pagina" id="page-products">
+        <div class="cabecalho-secao">
+          <div>
+            <h2>Produtos</h2>
+            <p>Cadastre o catálogo de alimentos dos estabelecimentos.</p>
+          </div>
+
+          <button class="botao-principal" id="newProduct" type="button">
+            ＋ Novo produto
+          </button>
+        </div>
+
+        <div class="barra-ferramentas">
+          <input
+            class="campo-busca"
+            id="productSearch"
+            type="search"
+            placeholder="⌕ Buscar produto..."
+          />
+        </div>
+
+        <article class="painel">
+          <div class="envoltorio-tabela" id="productsTable"></div>
+        </article>
+      </section>
+
+      <!-- Lotes -->
+      <section class="pagina" id="page-lots">
+        <div class="cabecalho-secao">
+          <div>
+            <h2>Lotes</h2>
+            <p>Controle a quantidade disponível e a validade de cada lote.</p>
+          </div>
+
+          <button class="botao-principal" id="newLot" type="button">
+            ＋ Novo lote
+          </button>
+        </div>
+
+        <div class="barra-ferramentas">
+          <input
+            class="campo-busca"
+            id="lotSearch"
+            type="search"
+            placeholder="⌕ Buscar produto ou lote..."
+          />
+
+          <select class="campo-filtro" id="lotFilter">
+            <option value="all">Todas as situações</option>
+            <option value="available">Disponíveis</option>
+            <option value="expiring">Próximos do vencimento</option>
+            <option value="expired">Vencidos</option>
+            <option value="empty">Sem estoque</option>
+          </select>
+        </div>
+
+        <article class="painel">
+          <div class="envoltorio-tabela" id="lotsTable"></div>
+        </article>
+      </section>
+
+      <!-- Reservas -->
+      <section class="pagina" id="page-reservations">
+        <div class="cabecalho-secao">
+          <div>
+            <h2>Reservas</h2>
+            <p>Gerencie a destinação dos alimentos disponíveis.</p>
+          </div>
+
+          <button class="botao-principal" id="newReservation" type="button">
+            ＋ Nova reserva
+          </button>
+        </div>
+
+        <div class="barra-ferramentas">
+          <input
+            class="campo-busca"
+            id="reservationSearch"
+            type="search"
+            placeholder="⌕ Buscar pessoa ou produto..."
+          />
+
+          <select class="campo-filtro" id="reservationFilter">
+            <option value="all">Todos os status</option>
+            <option value="pending">Pendente</option>
+            <option value="confirmed">Confirmada</option>
+            <option value="completed">Concluída</option>
+            <option value="cancelled">Cancelada</option>
+          </select>
+        </div>
+
+        <article class="painel">
+          <div class="envoltorio-tabela" id="reservationsTable"></div>
+        </article>
+      </section>
+
+      <!-- Relatórios -->
+      <section class="pagina" id="page-reports">
+        <div class="cabecalho-secao">
+          <div>
+            <h2>Relatórios</h2>
+            <p>Acompanhe os resultados do reaproveitamento.</p>
+          </div>
+
+          <button class="botao-contorno" id="exportReport" type="button">
+            ↓ Exportar CSV
+          </button>
+        </div>
+
+        <div class="destaque-relatorio">
+          <div>
+            <span class="texto-superior claro">IMPACTO ACUMULADO</span>
+            <h2 id="reportSaved">0 kg</h2>
+            <p>de alimentos salvos do desperdício</p>
+          </div>
+          <span class="ilustracao-relatorio">🌎</span>
+        </div>
+
+        <div class="grade-estatisticas estatisticas-relatorio">
+          <article class="cartao-estatistica">
+            <span>Reservas concluídas</span>
+            <strong id="reportCompleted">0</strong>
+          </article>
+
+          <article class="cartao-estatistica">
+            <span>Produtos</span>
+            <strong id="reportProducts">0</strong>
+          </article>
+
+          <article class="cartao-estatistica">
+            <span>Lotes</span>
+            <strong id="reportLots">0</strong>
+          </article>
+
+          <article class="cartao-estatistica">
+            <span>Estabelecimentos</span>
+            <strong id="reportEstablishments">0</strong>
+          </article>
+        </div>
+
+        <article class="painel">
+          <div class="cabecalho-painel">
+            <div>
+              <h2>Desperdício evitado por produto</h2>
+              <p>Peso estimado das reservas concluídas.</p>
+            </div>
+          </div>
+
+          <div id="reportBars" class="lista-barras"></div>
+        </article>
+
+        <p class="explicacao-relatorio">
+          O desperdício evitado é uma estimativa calculada pelo peso unitário do
+          produto multiplicado pela quantidade de reservas concluídas. Não
+          representa uma medição ambiental certificada.
+        </p>
+      </section>
+    </main>
+
+    <!-- Janela modal de cadastro e edição -->
+    <div class="fundo-modal" id="modalBackdrop">
+      <section
+        class="janela-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div class="cabecalho-modal">
+          <div>
+            <span class="texto-superior">REAPROVEITA</span>
+            <h2 id="modalTitle">Cadastro</h2>
+          </div>
+
+          <button
+            class="botao-fechar-modal"
+            id="closeModal"
+            type="button"
+            aria-label="Fechar"
+          >
+            ×
+          </button>
+        </div>
+
+        <form id="modalForm">
+          <div id="modalFields" class="grade-formulario"></div>
+
+          <div class="acoes-formulario">
+            <button class="botao-contorno" id="cancelModal" type="button">
+              Cancelar
+            </button>
+
+            <button class="botao-principal" type="submit">Salvar</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- Notificações do sistema -->
+    <div class="notificacao" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

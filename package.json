@@ -1,0 +1,19 @@
+{
+  "name": "reaproveita",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sistema de gestão de alimentos, lotes, reservas e desperdício evitado.",
+  "scripts": {
+    "dev": "node --watch backend/server.js",
+    "start": "node backend/server.js",
+    "check": "node --check backend/server.js && node --check backend/config/database.js && node --check backend/utils/asyncHandler.js && node --check backend/routes/products.routes.js && node --check backend/routes/lots.routes.js && node --check backend/routes/reservations.routes.js && node --check backend/routes/establishments.routes.js && node --check backend/routes/dashboard.routes.js && node --check backend/routes/reports.routes.js && node --check frontend/js/api.js && node --check frontend/js/app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mariadb": "^3.4.0"
+  },
+  "devDependencies": {}
+}
